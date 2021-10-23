@@ -40,6 +40,12 @@ main > .container {
   padding: 60px 15px 0;
 }
 
+/* Align The Logo Image */
+.img-container {
+  display: flex;
+  align-items: center;
+}
+
 /* Remove the outline from toggle menue */
 .navbar button:focus {
   outline: none;
