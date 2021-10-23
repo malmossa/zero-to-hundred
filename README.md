@@ -1,2 +1,2 @@
-# JS-projects-template
-JavaScript Projects Template with Bootstrap 5
+# Zero To Hundred
+JavaScript Projects with Bootstrap 5
