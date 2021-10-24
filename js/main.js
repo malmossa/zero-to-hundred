@@ -1,56 +1,41 @@
+const startValue = document.getElementById("startValue");
+const endValue = document.getElementById("endValue");
+const btnSubmit = document.getElementById("btnSubmit");
+const result = document.getElementById("results");
 
-// EventListener
-document.getElementById("btnSubmit").addEventListener("click", getValue);
+let numbersArray = [];
 
-/* Controller Function */
+btnSubmit.addEventListener("click", controller);
 
-function getValue () {
-  // Get values from the page
-  let startValue = document.getElementById("startValue").value ;
-  let endValue = document.getElementById("endValue").value ;
+function controller() {
+  getInputValue();
+  displayResult();
+}
 
-  let numbers = [];
+function getInputValue() {
+  const startNumber = Number.parseInt(startValue.value);
+  const endNumber = Number.parseInt(endValue.value);
 
-  // Convert The input into integer
-  startValue = parseInt(startValue);
-  endValue = parseInt(endValue);
-
-  // Check the input if it's a number
-  if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-
-    // Call generateNumbers function
-    numbers = generateNumbers(startValue, endValue); 
+  if (Number.isInteger(startNumber) && Number.isInteger(endNumber)) {
+    for (let i = startNumber; i <= endNumber; i++) {
+      numbersArray.push(i);
+    }
   } else {
-    alert("Please enter only numbers!")
+    alert("Please enter a number");
   }
-  
-  //  Call displayNumbers function 
-    displayNumbers(numbers);
-  
 }
 
-
-/* Logic function */
-// Generate Numbers 
-function generateNumbers (sValue, eValue) {
-  let numbers = [];
-
-  for (let i = sValue; i <= eValue; i ++ ) {
-    numbers.push(i);
-  }
-  return numbers
-}
-
-
-/* === View function */
-// Display Numbers and mark even numbers bold
-function displayNumbers (numbers) {
-  let templateRows = "";
-
-  for (let i = 0; i < numbers.length; i ++) {
-    let number = numbers[i];
-    templateRows += `<tr><td>${number}</td></tr>`
+function displayResult() {
+  let tableRow = "";
+  let className = "";
+  for (let i = 0; i < numbersArray.length; i++) {
+    if (numbersArray[i] % 2 == 0) {
+      className = "even";
+    } else {
+      className = "";
+    }
+    tableRow += `<tr><td class="${className}">${numbersArray[i]}</td></tr>`;
   }
 
-  document.getElementById("results").innerHTML = templateRows;
+  result.innerHTML = tableRow;
 }
