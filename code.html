@@ -55,24 +55,84 @@
 
     <main class="flex-shrink-0">
       <div class="container py-5 px-5 mt-5">
-        <h2>The Code for APP NAME.</h2>
+        <h2>The Code for: Zero to Hundred.</h2>
         <div class="row row-cols-1 row-cols-lg-2">
           <div class="col-lg-8">
             <pre class="line-numbers">
               <code class="language-javascript">
-                function helloWorld() {
-                  alert("Hello World!");
+                  // Assign All The Selectors
+                  const startValue = document.getElementById("startValue");
+                  const endValue = document.getElementById("endValue");
+                  const btnSubmit = document.getElementById("btnSubmit");
+                  const btnClear = document.getElementById("btnClear");
+                  const result = document.getElementById("results");
+
+                  // Declare an array to hold the numbers fron the inputs
+                  let numbersArray = [];
+
+                  // The Event Listener
+                  btnSubmit.addEventListener("click", controller);
+                  btnClear.addEventListener("click", resetInput);
+
+                  // The reset function
+                  function resetInput() {
+                    startValue.value = "0";
+                    endValue.value = "100";
+                    result.innerHTML = " ";
+                    location.reload(true);
+                  }
+
+                  // The Controller function
+                  function controller() {
+                    getInputValue();
+                    displayResult();
+                  }
+
+                  // Getting the input values and convert the input into integer
+                  function getInputValue() {
+                    const startNumber = Number.parseInt(startValue.value);
+                    const endNumber = Number.parseInt(endValue.value);
+
+                    if (Number.isInteger(startNumber) && Number.isInteger(endNumber)) {
+                      for (let i = startNumber; i <= endNumber; i++) {
+                        numbersArray.push(i);
+                      }
+                    } else {
+                      alert("Please enter a number");
+                    }
+                  }
+
+                  // Display the result
+                  function displayResult() {
+                    let tableRow = "";
+                    let className = "";
+                    for (let i = 0; i < numbersArray.length; i++) {
+                      if (numbersArray[i] % 2 == 0) {
+                        className = "even";
+                      } else {
+                        className = "";
+                      }
+                      tableRow += `<tr><td class="${className}">${numbersArray[i]}</td></tr>`;
+                    }
+
+                    result.innerHTML = tableRow;
                   }
               </code>
             </pre>
           </div>
           <div class="col-lg-4">
-            <p>The Code is structed in one function.</p>
-            <h5>Hello World</h5>
-            <p>
-              Hello world is a function that display an alert with a message of
-              "Hello World".
-            </p>
+            <h5 class="mb-3">My thought process when writing this app</h5>
+            <ul>
+              <li>
+                Get all the 4 selectors to access the HTML elements at the top
+                (start value input, end value input, buttons, the table
+                container).
+              </li>
+              <li>Declare an empty array to hold the input values.</li>
+              <li>Assign 2 event listeners for the buttons.</li>
+              <li>Create function to refresh the page using reload method.</li>
+              <li>Create function to call out all the functions.</li>
+            </ul>
           </div>
         </div>
       </div>
