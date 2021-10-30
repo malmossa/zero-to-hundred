@@ -1,8 +1,13 @@
 :root {
-  --primary-color: #38471f;
-  --secondary-color: #7fa046;
-  --dark-color: #556b2f;
+  --primary-color: #303030;
+  --secondary-color: #ca000a;
+  --dark-color: #1a1a1a;
   --white-color: #e7e7e7;
+}
+
+@font-face {
+  font-family: Medusa Gothic;
+  src: url(/fonts/MedusaGothic\ D.otf);
 }
 
 body {
@@ -28,6 +33,17 @@ h6 {
 
 .even {
   font-weight: bold;
+}
+
+/* FOOTER */
+footer h4 {
+  font-family: Medusa Gothic;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+footer span {
+  color: #e34c26;
 }
 
 footer .social > a {
