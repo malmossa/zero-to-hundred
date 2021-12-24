@@ -48,12 +48,11 @@ footer span {
 
 footer .social > a {
   color: var(--white-color);
-  opacity: 0.75;
+  opacity: 0.65;
 }
 
 footer .social > a:hover {
   opacity: 0.9;
-  color: var(--secondary-color);
 }
 
 main > .container {
